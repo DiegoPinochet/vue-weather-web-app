@@ -15,7 +15,11 @@ defineProps<{
 <template>
   <div class="flex flex-col items-center w-full">
     <div class="flex flex-row items-center px-3 py-2 justify-between w-full gap-8">
-      <img :src="weatherIcon" alt="weather icon" class="size-10" />
+      <img
+        :src="`https://openweathermap.org/img/wn/${weatherIcon}.png`"
+        alt="weather icon"
+        class="size-10"
+      />
       <div class="flex flex-col gap-0.5 flex-1">
         <H4>{{ date }}</H4>
         <P class="text-muted-foreground">{{ description }}</P>
