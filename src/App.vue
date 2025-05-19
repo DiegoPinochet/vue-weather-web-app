@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import WeatherByHourCard from './components/weather-by-hour/WeatherByHourCard.vue'
 import WeatherByDateCard from './components/weather-by-date/WeatherByDateCard.vue'
+import CitySearchForm from './components/city-search-form/CitySearchForm.vue'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/tabs'
 import { ref, computed } from 'vue'
 
@@ -409,9 +410,8 @@ const currentWeatherByDate = computed(() => cityWeatherData[selectedCity.value].
 
 <template>
   <div class="min-h-screen min-w-screen p-4 bg-blue-100">
-    <header class="mb-8"></header>
-
-    <main class="flex flex-col w-full justify-start items-center">
+    <main class="flex flex-col gap-4 w-full justify-start items-center">
+      <CitySearchForm class="max-w-xl" />
       <Tabs v-model="selectedCity" class="w-full max-w-xl">
         <TabsList class="w-full">
           <TabsTrigger v-for="city in MAIN_CITIES" :key="city.value" :value="city.value">
