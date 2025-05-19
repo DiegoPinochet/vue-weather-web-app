@@ -6,6 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/tabs'
 import { onMounted, ref, watch } from 'vue'
 import { getWeatherByCityName } from './fetchers/get-weather-by-city-name.fetcher'
 import { Loader2 } from 'lucide-vue-next'
+import { Button } from './components/ui/button'
 
 type WeatherByHour = {
   temperature: number
@@ -121,6 +122,9 @@ onMounted(async () => {
             <template v-else>
               <WeatherByHourCard :weather-by-hour="currentWeatherByHour" />
               <WeatherByDateCard :weather-by-date="currentWeatherByDate" />
+              <Button class="w-full" @click="fetchWeatherData(city.value, undefined)">
+                Refetch
+              </Button>
             </template>
           </div>
         </TabsContent>
@@ -135,6 +139,16 @@ onMounted(async () => {
         <template v-else>
           <WeatherByHourCard :weather-by-hour="currentWeatherByHour" />
           <WeatherByDateCard :weather-by-date="currentWeatherByDate" />
+          <Button
+            class="w-full"
+            @click="
+              fetchWeatherData(undefined, {
+                lat: parseFloat(customCityCoordinates.split(',')[0]),
+                long: parseFloat(customCityCoordinates.split(',')[1]),
+              })
+            "
+            >Refetch</Button
+          >
         </template>
       </div>
     </main>
