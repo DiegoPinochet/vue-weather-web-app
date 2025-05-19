@@ -20,7 +20,7 @@ defineProps<{
         <H4>{{ date }}</H4>
         <P class="text-muted-foreground">{{ description }}</P>
       </div>
-      <div class="flex flex-row gap-1">
+      <div class="flex flex-row gap-2">
         <P>{{ minTemperature }}°</P>
         <P>{{ maxTemperature }}°</P>
       </div>
