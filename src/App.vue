@@ -6,6 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/tabs'
 import { onMounted, ref, watch } from 'vue'
 import { getWeatherByCityName } from './fetchers/get-weather-by-city-name.fetcher'
 import { Loader2 } from 'lucide-vue-next'
+import { Button } from './components/ui/button'
 
 type WeatherByHour = {
   temperature: number
@@ -39,20 +40,24 @@ const MAIN_CITIES = [
   },
 ]
 
-const selectedCity = ref<string>('Rio de Janeiro')
+const selectedCity = ref<string>()
 const isLoading = ref(false)
 const currentWeatherByHour = ref<WeatherByHour[]>([])
 const currentWeatherByDate = ref<WeatherByDate[]>([])
 
-watch(selectedCity, async (newCity) => {
-  await fetchWeatherData(newCity)
-})
+const customCityCoordinates = ref<string | undefined>()
 
-const fetchWeatherData = async (cityName: string) => {
+const fetchWeatherData = async (
+  cityName?: string,
+  coordinates?: {
+    lat: number
+    long: number
+  },
+) => {
   try {
     isLoading.value = true
 
-    const { weatherByHour, weatherByDate } = await getWeatherByCityName(cityName)
+    const { weatherByHour, weatherByDate } = await getWeatherByCityName(cityName, coordinates)
 
     currentWeatherByHour.value = weatherByHour.map((hour, index) => ({
       temperature: hour.temperature,
@@ -76,15 +81,33 @@ const fetchWeatherData = async (cityName: string) => {
   }
 }
 
-onMounted(() => {
-  fetchWeatherData(selectedCity.value)
+watch(selectedCity, async (newCity) => {
+  customCityCoordinates.value = undefined
+  await fetchWeatherData(newCity)
+})
+
+watch(customCityCoordinates, async (newCoordinates) => {
+  if (!newCoordinates) {
+    return
+  }
+
+  selectedCity.value = undefined
+
+  await fetchWeatherData(undefined, {
+    lat: parseFloat(newCoordinates.split(',')[0]),
+    long: parseFloat(newCoordinates.split(',')[1]),
+  })
+})
+
+onMounted(async () => {
+  await fetchWeatherData(selectedCity.value)
 })
 </script>
 
 <template>
   <div class="min-h-screen min-w-screen p-4 bg-blue-100">
     <main class="flex flex-col gap-4 w-full justify-start items-center">
-      <CitySearchForm class="max-w-xl" />
+      <CitySearchForm class="max-w-xl" v-model="customCityCoordinates" />
       <Tabs class="w-full max-w-xl" v-model="selectedCity">
         <TabsList class="w-full">
           <TabsTrigger v-for="city in MAIN_CITIES" :key="city.value" :value="city.value">
@@ -99,10 +122,35 @@ onMounted(() => {
             <template v-else>
               <WeatherByHourCard :weather-by-hour="currentWeatherByHour" />
               <WeatherByDateCard :weather-by-date="currentWeatherByDate" />
+              <Button class="w-full" @click="fetchWeatherData(city.value, undefined)">
+                Refetch
+              </Button>
             </template>
           </div>
         </TabsContent>
       </Tabs>
+      <div
+        v-if="customCityCoordinates"
+        class="max-w-xl flex flex-col gap-4 w-full justify-center items-center"
+      >
+        <div v-if="isLoading" class="w-full flex flex-row justify-center text-center py-4">
+          <Loader2 class="w-10 h-10 animate-spin text-foreground" />
+        </div>
+        <template v-else>
+          <WeatherByHourCard :weather-by-hour="currentWeatherByHour" />
+          <WeatherByDateCard :weather-by-date="currentWeatherByDate" />
+          <Button
+            class="w-full"
+            @click="
+              fetchWeatherData(undefined, {
+                lat: parseFloat(customCityCoordinates.split(',')[0]),
+                long: parseFloat(customCityCoordinates.split(',')[1]),
+              })
+            "
+            >Refetch</Button
+          >
+        </template>
+      </div>
     </main>
   </div>
 </template>

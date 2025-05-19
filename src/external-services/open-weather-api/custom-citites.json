@@ -1,0 +1,778 @@
+{
+  "Koz\u00e1ni": {
+    "lat": 40.30069,
+    "long": 21.78896
+  },
+  "Komotin\u00ed": {
+    "lat": 41.11917,
+    "long": 25.40535
+  },
+  "Maurepas": {
+    "lat": 48.76486,
+    "long": 1.92923
+  },
+  "Manosque": {
+    "lat": 43.82883,
+    "long": 5.78688
+  },
+  "Les Mureaux": {
+    "lat": 48.99173,
+    "long": 1.90972
+  },
+  "Kilk\u00eds": {
+    "lat": 40.99302,
+    "long": 22.87433
+  },
+  "Le Creusot": {
+    "lat": 46.80714,
+    "long": 4.41632
+  },
+  "\u00c9vry": {
+    "lat": 48.63333,
+    "long": 2.45
+  },
+  "\u00c9vreux": {
+    "lat": 49.02414,
+    "long": 1.15082
+  },
+  "Dieppe": {
+    "lat": 46.07844,
+    "long": -64.68735
+  },
+  "Cr\u00e9teil": {
+    "lat": 48.78333,
+    "long": 2.46667
+  },
+  "Caen": {
+    "lat": 49.18585,
+    "long": -0.35912
+  },
+  "Cachan": {
+    "lat": 48.79632,
+    "long": 2.33661
+  },
+  "Brest": {
+    "lat": 52.09755,
+    "long": 23.68775
+  },
+  "Bressuire": {
+    "lat": 46.85,
+    "long": -0.48333
+  },
+  "Avon": {
+    "lat": 41.45171,
+    "long": -82.03542
+  },
+  "Avion": {
+    "lat": 50.41038,
+    "long": 2.83053
+  },
+  "Amiens": {
+    "lat": 49.9,
+    "long": 2.3
+  },
+  "Teo": {
+    "lat": 42.75,
+    "long": -8.5
+  },
+  "Zubia": {
+    "lat": 37.11906,
+    "long": -3.584
+  },
+  "Zafra": {
+    "lat": 38.41667,
+    "long": -6.41667
+  },
+  "Yecla": {
+    "lat": 38.61365,
+    "long": -1.11468
+  },
+  "Villena": {
+    "lat": 38.6373,
+    "long": -0.86568
+  },
+  "Villarrobledo": {
+    "lat": 39.26992,
+    "long": -2.60119
+  },
+  "Vila-real": {
+    "lat": 39.9383,
+    "long": -0.10087
+  },
+  "Villanueva de la Serena": {
+    "lat": 38.97655,
+    "long": -5.7974
+  },
+  "Villajoyosa": {
+    "lat": 38.50754,
+    "long": -0.23346
+  },
+  "V\u00edcar": {
+    "lat": 36.83155,
+    "long": -2.64273
+  },
+  "V\u00e9lez-M\u00e1laga": {
+    "lat": 36.78107,
+    "long": -4.10266
+  },
+  "Valencia": {
+    "lat": 10.16202,
+    "long": -68.00765
+  },
+  "Valdepe\u00f1as": {
+    "lat": 38.76211,
+    "long": -3.38483
+  },
+  "Utrera": {
+    "lat": 37.18516,
+    "long": -5.78093
+  },
+  "Ubrique": {
+    "lat": 36.67777,
+    "long": -5.446
+  },
+  "\u00dabeda": {
+    "lat": 38.01328,
+    "long": -3.3705
+  },
+  "Totana": {
+    "lat": 37.7688,
+    "long": -1.50229
+  },
+  "Torrox": {
+    "lat": 36.75793,
+    "long": -3.95233
+  },
+  "Torrevieja": {
+    "lat": 37.97872,
+    "long": -0.68222
+  },
+  "Torre-Pacheco": {
+    "lat": 37.74293,
+    "long": -0.95396
+  },
+  "Torrent": {
+    "lat": 39.43705,
+    "long": -0.46546
+  },
+  "Torremolinos": {
+    "lat": 36.62035,
+    "long": -4.49976
+  },
+  "Rangpur": {
+    "lat": 25.74664,
+    "long": 89.25166
+  },
+  "Sherpur": {
+    "lat": 25.01881,
+    "long": 90.01751
+  },
+  "Meylan": {
+    "lat": 45.21988,
+    "long": 5.79007
+  },
+  "Mauguio": {
+    "lat": 43.6181,
+    "long": 4.00739
+  },
+  "Kav\u00e1la": {
+    "lat": 40.93959,
+    "long": 24.40687
+  },
+  "Maubeuge": {
+    "lat": 50.27875,
+    "long": 3.97267
+  },
+  "Massy": {
+    "lat": 48.72692,
+    "long": 2.28301
+  },
+  "Wasquehal": {
+    "lat": 50.67043,
+    "long": 3.13382
+  },
+  "Vend\u00f4me": {
+    "lat": 47.8,
+    "long": 1.06667
+  },
+  "Limoges": {
+    "lat": 45.83153,
+    "long": 1.25781
+  },
+  "Trappes": {
+    "lat": 48.77413,
+    "long": 2.01781
+  },
+  "La Ciotat": {
+    "lat": 43.17476,
+    "long": 5.60449
+  },
+  "Hy\u00e8res": {
+    "lat": 43.11954,
+    "long": 6.13897
+  },
+  "les Escaldes": {
+    "lat": 42.50729,
+    "long": 1.53414
+  },
+  "Andorra la Vella": {
+    "lat": 42.50779,
+    "long": 1.52109
+  },
+  "Umm al Qaywayn": {
+    "lat": 25.56473,
+    "long": 55.55517
+  },
+  "Ras al-Khaimah": {
+    "lat": 25.78953,
+    "long": 55.9432
+  },
+  "Khawr Fakk\u0101n": {
+    "lat": 25.33132,
+    "long": 56.34199
+  },
+  "Dubai": {
+    "lat": 25.0657,
+    "long": 55.17128
+  },
+  "Dibba Al-Fujairah": {
+    "lat": 25.59246,
+    "long": 56.26176
+  },
+  "Sharjah": {
+    "lat": 25.33737,
+    "long": 55.41206
+  },
+  "Ar Ruways": {
+    "lat": 24.11028,
+    "long": 52.73056
+  },
+  "Al Fujayrah": {
+    "lat": 25.11641,
+    "long": 56.34141
+  },
+  "Al Ain": {
+    "lat": 24.19167,
+    "long": 55.76056
+  },
+  "Ajman": {
+    "lat": 25.41111,
+    "long": 55.43504
+  },
+  "Adh Dhayd": {
+    "lat": 25.28812,
+    "long": 55.88157
+  },
+  "Abu Dhabi": {
+    "lat": 24.46667,
+    "long": 54.36667
+  },
+  "Zaranj": {
+    "lat": 30.95962,
+    "long": 61.86037
+  },
+  "Taloqan": {
+    "lat": 36.73605,
+    "long": 69.53451
+  },
+  "Sh\u012bn\u1e0fan\u1e0f": {
+    "lat": 33.30294,
+    "long": 62.1474
+  },
+  "Shibirgh\u0101n": {
+    "lat": 36.66757,
+    "long": 65.7529
+  },
+  "Shahrak": {
+    "lat": 34.10737,
+    "long": 64.3052
+  },
+  "Sar-e Pul": {
+    "lat": 36.21544,
+    "long": 65.93249
+  },
+  "Sang-e Ch\u0101rak": {
+    "lat": 35.84972,
+    "long": 66.43694
+  },
+  "A\u012bbak": {
+    "lat": 36.26468,
+    "long": 68.01551
+  },
+  "Rust\u0101q": {
+    "lat": 37.12604,
+    "long": 69.83045
+  },
+  "Qarq\u012bn": {
+    "lat": 37.41853,
+    "long": 66.04358
+  },
+  "Qar\u0101wul": {
+    "lat": 37.21959,
+    "long": 68.7802
+  },
+  "Pul-e Khumr\u012b": {
+    "lat": 35.94458,
+    "long": 68.71512
+  },
+  "Paghm\u0101n": {
+    "lat": 34.58787,
+    "long": 68.95091
+  },
+  "Nahr\u012bn": {
+    "lat": 36.0649,
+    "long": 69.13343
+  },
+  "Maymana": {
+    "lat": 35.92139,
+    "long": 64.78361
+  },
+  "Mehtar L\u0101m": {
+    "lat": 34.67139,
+    "long": 70.20944
+  },
+  "Maz\u0101r-e Shar\u012bf": {
+    "lat": 36.70904,
+    "long": 67.11087
+  },
+  "Lashkar G\u0101h": {
+    "lat": 31.59382,
+    "long": 64.37161
+  },
+  "Kushk": {
+    "lat": 33.29565,
+    "long": 61.95221
+  },
+  "Kunduz": {
+    "lat": 36.72895,
+    "long": 68.857
+  },
+  "Kh\u014dst": {
+    "lat": 33.33951,
+    "long": 69.92041
+  },
+  "Khulm": {
+    "lat": 36.69736,
+    "long": 67.69826
+  },
+  "Kh\u0101sh": {
+    "lat": 28.22107,
+    "long": 61.21582
+  },
+  "Khanabad": {
+    "lat": 36.6825,
+    "long": 69.11556
+  },
+  "Karukh": {
+    "lat": 34.48108,
+    "long": 62.5863
+  },
+  "Kandah\u0101r": {
+    "lat": 31.61332,
+    "long": 65.71013
+  },
+  "Kabul": {
+    "lat": 34.52813,
+    "long": 69.17233
+  },
+  "Jal\u0101l\u0101b\u0101d": {
+    "lat": 27.72625,
+    "long": 79.65523
+  },
+  "Jabal os Saraj": {
+    "lat": 35.11833,
+    "long": 69.23778
+  },
+  "Her\u0101t": {
+    "lat": 34.34817,
+    "long": 62.19967
+  },
+  "Ghormach": {
+    "lat": 35.73062,
+    "long": 63.78264
+  },
+  "Ghazni": {
+    "lat": 33.55391,
+    "long": 68.42096
+  },
+  "Gereshk": {
+    "lat": 31.82089,
+    "long": 64.57005
+  },
+  "Gardez": {
+    "lat": 33.59744,
+    "long": 69.22592
+  },
+  "Fayzabad": {
+    "lat": 37.11664,
+    "long": 70.58002
+  },
+  "Farah": {
+    "lat": 32.37451,
+    "long": 62.11638
+  },
+  "Kafir Qala": {
+    "lat": 34.66667,
+    "long": 61.06667
+  },
+  "Charikar": {
+    "lat": 35.01361,
+    "long": 69.17139
+  },
+  "Baraki Barak": {
+    "lat": 33.96744,
+    "long": 68.9492
+  },
+  "B\u0101my\u0101n": {
+    "lat": 34.82156,
+    "long": 67.82734
+  },
+  "Balkh": {
+    "lat": 36.75635,
+    "long": 66.8972
+  },
+  "Baghl\u0101n": {
+    "lat": 36.13068,
+    "long": 68.70829
+  },
+  "\u0100rt Khw\u0101jah": {
+    "lat": 37.08571,
+    "long": 69.47958
+  },
+  "\u0100sm\u0101r": {
+    "lat": 35.03333,
+    "long": 71.35809
+  },
+  "Asad\u0101b\u0101d": {
+    "lat": 34.78241,
+    "long": 48.12012
+  },
+  "Andkh\u014dy": {
+    "lat": 36.95293,
+    "long": 65.12376
+  },
+  "B\u0101z\u0101rak": {
+    "lat": 35.31292,
+    "long": 69.51519
+  },
+  "Markaz-e Woluswal\u012b-ye \u0100ch\u012bn": {
+    "lat": 34.12583,
+    "long": 70.70778
+  },
+  "Saint John\u2019s": {
+    "lat": 17.11717,
+    "long": -61.84573
+  },
+  "The Valley": {
+    "lat": 18.21704,
+    "long": -63.05783
+  },
+  "Sarand\u00eb": {
+    "lat": 39.87556,
+    "long": 20.00528
+  },
+  "Kuk\u00ebs": {
+    "lat": 42.07694,
+    "long": 20.42194
+  },
+  "Kor\u00e7\u00eb": {
+    "lat": 40.61861,
+    "long": 20.78083
+  },
+  "Gjirokast\u00ebr": {
+    "lat": 40.07583,
+    "long": 20.13889
+  },
+  "Elbasan": {
+    "lat": 41.1125,
+    "long": 20.08222
+  },
+  "Burrel": {
+    "lat": 41.61028,
+    "long": 20.00889
+  },
+  "Vlor\u00eb": {
+    "lat": 40.46667,
+    "long": 19.48972
+  },
+  "Tirana": {
+    "lat": 41.3275,
+    "long": 19.81889
+  },
+  "Shkod\u00ebr": {
+    "lat": 42.06828,
+    "long": 19.51258
+  },
+  "Patos Fshat": {
+    "lat": 40.64278,
+    "long": 19.65083
+  },
+  "Lushnj\u00eb": {
+    "lat": 40.94194,
+    "long": 19.705
+  },
+  "Lezh\u00eb": {
+    "lat": 41.78361,
+    "long": 19.64361
+  },
+  "La\u00e7": {
+    "lat": 41.63556,
+    "long": 19.71306
+  },
+  "Ku\u00e7ov\u00eb": {
+    "lat": 40.80028,
+    "long": 19.91667
+  },
+  "Kruj\u00eb": {
+    "lat": 41.50917,
+    "long": 19.79278
+  },
+  "Kavaj\u00eb": {
+    "lat": 41.18556,
+    "long": 19.55694
+  },
+  "Fier-\u00c7if\u00e7i": {
+    "lat": 40.71667,
+    "long": 19.56667
+  },
+  "Fier": {
+    "lat": 40.72389,
+    "long": 19.55611
+  },
+  "Durr\u00ebs": {
+    "lat": 41.32306,
+    "long": 19.44139
+  },
+  "Berat": {
+    "lat": 40.70583,
+    "long": 19.95222
+  },
+  "Kapan": {
+    "lat": 39.20755,
+    "long": 46.40576
+  },
+  "Goris": {
+    "lat": 39.51111,
+    "long": 46.34168
+  },
+  "Hats\u2019avan": {
+    "lat": 39.46405,
+    "long": 45.97047
+  },
+  "Artashat": {
+    "lat": 39.96144,
+    "long": 44.54447
+  },
+  "Ararat": {
+    "lat": 39.83069,
+    "long": 44.70569
+  },
+  "Yerevan": {
+    "lat": 40.18111,
+    "long": 44.51361
+  },
+  "Ejmiatsin": {
+    "lat": 40.16557,
+    "long": 44.29462
+  },
+  "Step\u2019anavan": {
+    "lat": 41.00995,
+    "long": 44.38531
+  },
+  "Spitak": {
+    "lat": 40.83221,
+    "long": 44.26731
+  },
+  "Sevan": {
+    "lat": 40.5473,
+    "long": 44.94171
+  },
+  "Masis": {
+    "lat": 40.06542,
+    "long": 44.41618
+  },
+  "Vanadzor": {
+    "lat": 40.80456,
+    "long": 44.4939
+  },
+  "Gavarr": {
+    "lat": 40.35398,
+    "long": 45.12386
+  },
+  "Hrazdan": {
+    "lat": 40.49748,
+    "long": 44.7662
+  },
+  "Armavir": {
+    "lat": 44.9892,
+    "long": 41.1234
+  },
+  "Gyumri": {
+    "lat": 40.7942,
+    "long": 43.84528
+  },
+  "Ashtarak": {
+    "lat": 40.2991,
+    "long": 44.36204
+  },
+  "Abovyan": {
+    "lat": 40.27368,
+    "long": 44.63348
+  },
+  "Saurimo": {
+    "lat": -9.66078,
+    "long": 20.39155
+  },
+  "Lucapa": {
+    "lat": -8.41915,
+    "long": 20.74466
+  },
+  "Luau": {
+    "lat": -10.70727,
+    "long": 22.22466
+  },
+  "U\u00edge": {
+    "lat": -7.60874,
+    "long": 15.06131
+  },
+  "Soio": {
+    "lat": -6.1349,
+    "long": 12.36894
+  },
+  "Nzeto": {
+    "lat": -7.23116,
+    "long": 12.8666
+  },
+  "N\u2019dalatando": {
+    "lat": -9.29782,
+    "long": 14.91162
+  },
+  "Mbanza Congo": {
+    "lat": -6.26703,
+    "long": 14.2401
+  },
+  "Malanje": {
+    "lat": -9.54015,
+    "long": 16.34096
+  },
+  "Luanda": {
+    "lat": -8.83682,
+    "long": 13.23432
+  },
+  "Caxito": {
+    "lat": -8.57848,
+    "long": 13.66425
+  },
+  "Cabinda": {
+    "lat": -5.55,
+    "long": 12.2
+  },
+  "Sumbe": {
+    "lat": -11.20605,
+    "long": 13.84371
+  },
+  "Namibe": {
+    "lat": -15.19611,
+    "long": 12.15222
+  },
+  "Menongue": {
+    "lat": -14.6585,
+    "long": 17.69099
+  },
+  "Luena": {
+    "lat": -11.78333,
+    "long": 19.91667
+  },
+  "Lubango": {
+    "lat": -14.91717,
+    "long": 13.4925
+  },
+  "Longonjo": {
+    "lat": -12.90667,
+    "long": 15.25333
+  },
+  "Lobito": {
+    "lat": -12.3644,
+    "long": 13.53601
+  },
+  "Cuito": {
+    "lat": -12.38333,
+    "long": 16.93333
+  },
+  "Huambo": {
+    "lat": -12.77611,
+    "long": 15.73917
+  },
+  "Catumbela": {
+    "lat": -12.43002,
+    "long": 13.54677
+  },
+  "Catabola": {
+    "lat": -12.15,
+    "long": 17.28333
+  },
+  "Camacupa": {
+    "lat": -12.01667,
+    "long": 17.48333
+  },
+  "Caluquembe": {
+    "lat": -13.78333,
+    "long": 14.68333
+  },
+  "Ca\u00e1la": {
+    "lat": -12.8525,
+    "long": 15.56056
+  },
+  "Benguela": {
+    "lat": -12.57626,
+    "long": 13.40547
+  },
+  "Z\u00e1rate": {
+    "lat": -34.09814,
+    "long": -59.02858
+  },
+  "Villa Ocampo": {
+    "lat": -28.48752,
+    "long": -59.35515
+  },
+  "Villa Lugano": {
+    "lat": -34.67907,
+    "long": -58.47263
+  },
+  "Villaguay": {
+    "lat": -31.8653,
+    "long": -59.02689
+  },
+  "Villa Gesell": {
+    "lat": -37.26394,
+    "long": -56.97304
+  },
+  "Tigre": {
+    "lat": -34.42603,
+    "long": -58.57962
+  },
+  "Tandil": {
+    "lat": -37.32167,
+    "long": -59.13316
+  },
+  "San Vicente": {
+    "lat": 13.63333,
+    "long": -88.8
+  },
+  "Santo Tom\u00e9": {
+    "lat": -31.66274,
+    "long": -60.7653
+  },
+  "Santa Elena": {
+    "lat": -2.22622,
+    "long": -80.85873
+  },
+  "San Pedro": {
+    "lat": 33.73585,
+    "long": -118.29229
+  },
+  "San Luis del Palmar": {
+    "lat": -27.5079,
+    "long": -58.55454
+  }
+}
