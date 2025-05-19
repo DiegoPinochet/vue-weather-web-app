@@ -1,10 +1,18 @@
 import { OpenWeatherAPIClient } from '../external-services'
 
-export const getWeatherByCityName = async (city: string) => {
+export const getWeatherByCityName = async (
+  city?: string,
+  coordinates?: {
+    lat: number
+    long: number
+  },
+) => {
   const openWeatherAPIClient = new OpenWeatherAPIClient()
 
-  const { list: fiveDaysThreeHoursForecast } =
-    await openWeatherAPIClient.get5Days3HoursForecast(city)
+  const { list: fiveDaysThreeHoursForecast } = await openWeatherAPIClient.get5Days3HoursForecast(
+    city,
+    coordinates,
+  )
 
   const weatherByHour = fiveDaysThreeHoursForecast.map((forecast) => ({
     date: new Date(forecast.dt * 1000).toLocaleDateString('en-US', {

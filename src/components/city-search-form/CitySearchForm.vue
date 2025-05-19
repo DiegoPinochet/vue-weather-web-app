@@ -4,41 +4,73 @@ import { toTypedSchema } from '@vee-validate/zod'
 import * as z from 'zod'
 
 import { FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { onMounted, ref, watch } from 'vue'
+import { listCustomCities } from '@/fetchers/list-custom-cities.fetcher'
+
+const props = defineProps<{
+  modelValue: string | undefined
+}>()
+
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string): void
+}>()
 
 const formSchema = toTypedSchema(
   z.object({
-    city: z.string({
-      required_error: 'City is required',
-      invalid_type_error: 'City must be a string',
+    latLong: z.string({
+      required_error: 'Lat and long are required',
     }),
   }),
 )
 
 const form = useForm({
   validationSchema: formSchema,
+  initialValues: {
+    latLong: props.modelValue,
+  },
 })
 
-const handleChange = () => {
-  form.handleSubmit((values) => {
-    console.log('Form submitted on change!', values)
-  })()
-}
+const customCitiesOptions = ref<Array<{ label: string; value: string }>>([])
+
+watch(form.values, (values) => {
+  if (values.latLong) {
+    emit('update:modelValue', values.latLong)
+  }
+})
+
+onMounted(async () => {
+  const customCities = await listCustomCities()
+
+  customCitiesOptions.value = customCities.map((city) => ({
+    label: city.name,
+    value: city.coordinates,
+  }))
+})
 </script>
 
 <template>
   <form class="w-full">
-    <FormField v-slot="{ componentField }" name="city">
+    <FormField v-slot="{ componentField }" name="latLong">
       <FormItem>
-        <FormControl>
-          <Input
-            type="text"
-            placeholder="Search for a city"
-            v-bind="componentField"
-            @input="handleChange"
-            class="text-foreground"
-          />
-        </FormControl>
+        <Select v-bind="componentField" class="w-full">
+          <FormControl>
+            <SelectTrigger class="w-full bg-background text-foreground">
+              <SelectValue placeholder="Select a city" class="w-full" />
+            </SelectTrigger>
+          </FormControl>
+          <SelectContent>
+            <SelectItem v-for="city in customCitiesOptions" :key="city.value" :value="city.value">
+              {{ city.label }}
+            </SelectItem>
+          </SelectContent>
+        </Select>
         <FormMessage />
       </FormItem>
     </FormField>
