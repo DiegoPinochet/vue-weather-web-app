@@ -5,7 +5,7 @@ import WeatherByHour from './WeatherByHour.vue'
 const props = defineProps<{
   weatherByHour: {
     temperature: number
-    rainPercentage: number
+    probabilityOfPrecipitation: number
     weatherIcon: string
     hour: string
     isLast?: boolean
@@ -24,7 +24,7 @@ const props = defineProps<{
           v-for="hour in props.weatherByHour"
           :key="hour.hour"
           :temperature="hour.temperature"
-          :rainPercentage="hour.rainPercentage"
+          :probabilityOfPrecipitation="hour.probabilityOfPrecipitation"
           :weatherIcon="hour.weatherIcon"
           :hour="hour.hour"
           :is-last="hour.isLast"

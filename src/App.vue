@@ -3,416 +3,89 @@ import WeatherByHourCard from './components/weather-by-hour/WeatherByHourCard.vu
 import WeatherByDateCard from './components/weather-by-date/WeatherByDateCard.vue'
 import CitySearchForm from './components/city-search-form/CitySearchForm.vue'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/tabs'
-import { ref, computed } from 'vue'
+import { onMounted, ref, watch } from 'vue'
+import { getWeatherByCityName } from './fetchers/get-weather-by-city-name.fetcher'
+import { Loader2 } from 'lucide-vue-next'
 
-interface WeatherByHour {
+type WeatherByHour = {
   temperature: number
-  rainPercentage: number
+  probabilityOfPrecipitation: number
   weatherIcon: string
   hour: string
-  isLast: boolean
+  isLast?: boolean
 }
 
-interface WeatherByDate {
-  date: string
-  maxTemperature: number
+type WeatherByDate = {
   minTemperature: number
-  rainPercentage: number
+  maxTemperature: number
   weatherIcon: string
+  date: string
   description: string
-  isLast: boolean
+  isLast?: boolean
 }
-
-interface CityWeather {
-  byHour: WeatherByHour[]
-  byDate: WeatherByDate[]
-}
-
-type CityCode = 'rio-de-janeiro' | 'beijing' | 'los-angeles'
 
 const MAIN_CITIES = [
   {
     label: 'Rio de Janeiro',
-    value: 'rio-de-janeiro' as CityCode,
+    value: 'Rio de Janeiro',
   },
   {
     label: 'Beijing',
-    value: 'beijing' as CityCode,
+    value: 'Beijing',
   },
   {
     label: 'Los Angeles',
-    value: 'los-angeles' as CityCode,
+    value: 'Los Angeles',
   },
 ]
 
-const selectedCity = ref<CityCode>('rio-de-janeiro')
+const selectedCity = ref<string>('Rio de Janeiro')
+const isLoading = ref(false)
+const currentWeatherByHour = ref<WeatherByHour[]>([])
+const currentWeatherByDate = ref<WeatherByDate[]>([])
 
-const cityWeatherData: Record<CityCode, CityWeather> = {
-  'rio-de-janeiro': {
-    byHour: [
-      {
-        temperature: 28,
-        rainPercentage: 10,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        hour: 'Now',
-        isLast: false,
-      },
-      {
-        temperature: 29,
-        rainPercentage: 15,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        hour: '13:00',
-        isLast: false,
-      },
-      {
-        temperature: 30,
-        rainPercentage: 20,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        hour: '14:00',
-        isLast: false,
-      },
-      {
-        temperature: 29,
-        rainPercentage: 25,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        hour: '15:00',
-        isLast: false,
-      },
-      {
-        temperature: 28,
-        rainPercentage: 30,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        hour: '16:00',
-        isLast: false,
-      },
-      {
-        temperature: 27,
-        rainPercentage: 40,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        hour: '17:00',
-        isLast: false,
-      },
-      {
-        temperature: 26,
-        rainPercentage: 35,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        hour: '18:00',
-        isLast: true,
-      },
-    ],
-    byDate: [
-      {
-        date: 'Today',
-        maxTemperature: 30,
-        minTemperature: 24,
-        rainPercentage: 30,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        description: 'Partly cloudy with light rain',
-        isLast: false,
-      },
-      {
-        date: 'Tomorrow',
-        maxTemperature: 29,
-        minTemperature: 23,
-        rainPercentage: 45,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        description: 'Rain showers likely',
-        isLast: false,
-      },
-      {
-        date: 'Wed',
-        maxTemperature: 28,
-        minTemperature: 22,
-        rainPercentage: 60,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        description: 'Heavy rain expected',
-        isLast: false,
-      },
-      {
-        date: 'Thu',
-        maxTemperature: 27,
-        minTemperature: 21,
-        rainPercentage: 40,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        description: 'Scattered showers',
-        isLast: false,
-      },
-      {
-        date: 'Fri',
-        maxTemperature: 29,
-        minTemperature: 22,
-        rainPercentage: 20,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        description: 'Partly sunny',
-        isLast: false,
-      },
-      {
-        date: 'Sat',
-        maxTemperature: 31,
-        minTemperature: 24,
-        rainPercentage: 10,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        description: 'Sunny skies',
-        isLast: false,
-      },
-      {
-        date: 'Sun',
-        maxTemperature: 32,
-        minTemperature: 25,
-        rainPercentage: 5,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        description: 'Clear and sunny',
-        isLast: true,
-      },
-    ],
-  },
-  beijing: {
-    byHour: [
-      {
-        temperature: 18,
-        rainPercentage: 5,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        hour: 'Now',
-        isLast: false,
-      },
-      {
-        temperature: 19,
-        rainPercentage: 10,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        hour: '13:00',
-        isLast: false,
-      },
-      {
-        temperature: 20,
-        rainPercentage: 15,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        hour: '14:00',
-        isLast: false,
-      },
-      {
-        temperature: 19,
-        rainPercentage: 20,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        hour: '15:00',
-        isLast: false,
-      },
-      {
-        temperature: 18,
-        rainPercentage: 25,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        hour: '16:00',
-        isLast: false,
-      },
-      {
-        temperature: 17,
-        rainPercentage: 30,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        hour: '17:00',
-        isLast: false,
-      },
-      {
-        temperature: 16,
-        rainPercentage: 25,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        hour: '18:00',
-        isLast: true,
-      },
-    ],
-    byDate: [
-      {
-        date: 'Today',
-        maxTemperature: 20,
-        minTemperature: 14,
-        rainPercentage: 20,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        description: 'Partly cloudy',
-        isLast: false,
-      },
-      {
-        date: 'Tomorrow',
-        maxTemperature: 19,
-        minTemperature: 13,
-        rainPercentage: 35,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        description: 'Light rain expected',
-        isLast: false,
-      },
-      {
-        date: 'Wed',
-        maxTemperature: 18,
-        minTemperature: 12,
-        rainPercentage: 50,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        description: 'Moderate rain',
-        isLast: false,
-      },
-      {
-        date: 'Thu',
-        maxTemperature: 17,
-        minTemperature: 11,
-        rainPercentage: 30,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        description: 'Scattered showers',
-        isLast: false,
-      },
-      {
-        date: 'Fri',
-        maxTemperature: 19,
-        minTemperature: 12,
-        rainPercentage: 15,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        description: 'Partly sunny',
-        isLast: false,
-      },
-      {
-        date: 'Sat',
-        maxTemperature: 21,
-        minTemperature: 14,
-        rainPercentage: 5,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        description: 'Sunny skies',
-        isLast: false,
-      },
-      {
-        date: 'Sun',
-        maxTemperature: 22,
-        minTemperature: 15,
-        rainPercentage: 0,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        description: 'Clear and sunny',
-        isLast: true,
-      },
-    ],
-  },
-  'los-angeles': {
-    byHour: [
-      {
-        temperature: 24,
-        rainPercentage: 0,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        hour: 'Now',
-        isLast: false,
-      },
-      {
-        temperature: 25,
-        rainPercentage: 0,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        hour: '13:00',
-        isLast: false,
-      },
-      {
-        temperature: 26,
-        rainPercentage: 5,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        hour: '14:00',
-        isLast: false,
-      },
-      {
-        temperature: 25,
-        rainPercentage: 10,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        hour: '15:00',
-        isLast: false,
-      },
-      {
-        temperature: 24,
-        rainPercentage: 15,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        hour: '16:00',
-        isLast: false,
-      },
-      {
-        temperature: 23,
-        rainPercentage: 20,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        hour: '17:00',
-        isLast: false,
-      },
-      {
-        temperature: 22,
-        rainPercentage: 15,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        hour: '18:00',
-        isLast: true,
-      },
-    ],
-    byDate: [
-      {
-        date: 'Today',
-        maxTemperature: 26,
-        minTemperature: 20,
-        rainPercentage: 10,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        description: 'Mostly sunny',
-        isLast: false,
-      },
-      {
-        date: 'Tomorrow',
-        maxTemperature: 25,
-        minTemperature: 19,
-        rainPercentage: 25,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        description: 'Light showers possible',
-        isLast: false,
-      },
-      {
-        date: 'Wed',
-        maxTemperature: 24,
-        minTemperature: 18,
-        rainPercentage: 40,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        description: 'Rain likely',
-        isLast: false,
-      },
-      {
-        date: 'Thu',
-        maxTemperature: 23,
-        minTemperature: 17,
-        rainPercentage: 20,
-        weatherIcon: 'https://openweathermap.org/img/wn/10d@2x.png',
-        description: 'Scattered showers',
-        isLast: false,
-      },
-      {
-        date: 'Fri',
-        maxTemperature: 25,
-        minTemperature: 18,
-        rainPercentage: 5,
-        weatherIcon: 'https://openweathermap.org/img/wn/02d@2x.png',
-        description: 'Partly cloudy',
-        isLast: false,
-      },
-      {
-        date: 'Sat',
-        maxTemperature: 27,
-        minTemperature: 20,
-        rainPercentage: 0,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        description: 'Sunny skies',
-        isLast: false,
-      },
-      {
-        date: 'Sun',
-        maxTemperature: 28,
-        minTemperature: 21,
-        rainPercentage: 0,
-        weatherIcon: 'https://openweathermap.org/img/wn/01d@2x.png',
-        description: 'Clear and sunny',
-        isLast: true,
-      },
-    ],
-  },
+watch(selectedCity, async (newCity) => {
+  await fetchWeatherData(newCity)
+})
+
+const fetchWeatherData = async (cityName: string) => {
+  try {
+    isLoading.value = true
+
+    const { weatherByHour, weatherByDate } = await getWeatherByCityName(cityName)
+
+    currentWeatherByHour.value = weatherByHour.map((hour, index) => ({
+      temperature: hour.temperature,
+      probabilityOfPrecipitation: hour.probabilityOfPrecipitation,
+      weatherIcon: hour.icon,
+      hour: hour.hour,
+      isLast: index === weatherByHour.length - 1,
+    }))
+    currentWeatherByDate.value = Object.entries(weatherByDate).map(([date, weather], index) => ({
+      minTemperature: weather.minTemperature,
+      maxTemperature: weather.maxTemperature,
+      weatherIcon: weather.forecasts[0].icon,
+      date,
+      description: weather.forecasts[0].description,
+      isLast: index === Object.keys(weatherByDate).length - 1,
+    }))
+  } catch (error) {
+    console.error('Error fetching weather data:', error)
+  } finally {
+    isLoading.value = false
+  }
 }
 
-const currentWeatherByHour = computed(() => cityWeatherData[selectedCity.value].byHour)
-const currentWeatherByDate = computed(() => cityWeatherData[selectedCity.value].byDate)
+onMounted(() => {
+  fetchWeatherData(selectedCity.value)
+})
 </script>
 
 <template>
   <div class="min-h-screen min-w-screen p-4 bg-blue-100">
     <main class="flex flex-col gap-4 w-full justify-start items-center">
       <CitySearchForm class="max-w-xl" />
-      <Tabs v-model="selectedCity" class="w-full max-w-xl">
+      <Tabs class="w-full max-w-xl" v-model="selectedCity">
         <TabsList class="w-full">
           <TabsTrigger v-for="city in MAIN_CITIES" :key="city.value" :value="city.value">
             {{ city.label }}
@@ -420,8 +93,13 @@ const currentWeatherByDate = computed(() => cityWeatherData[selectedCity.value].
         </TabsList>
         <TabsContent v-for="city in MAIN_CITIES" :key="city.value" :value="city.value">
           <div class="flex flex-col gap-4 w-full justify-center items-center">
-            <WeatherByHourCard :weather-by-hour="currentWeatherByHour" />
-            <WeatherByDateCard :weather-by-date="currentWeatherByDate" />
+            <div v-if="isLoading" class="w-full flex flex-row justify-center text-center py-4">
+              <Loader2 class="w-10 h-10 animate-spin text-foreground" />
+            </div>
+            <template v-else>
+              <WeatherByHourCard :weather-by-hour="currentWeatherByHour" />
+              <WeatherByDateCard :weather-by-date="currentWeatherByDate" />
+            </template>
           </div>
         </TabsContent>
       </Tabs>
