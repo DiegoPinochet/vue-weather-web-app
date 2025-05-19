@@ -10,7 +10,7 @@ class OpenWeatherAPIClient {
     this.axiosInstance = axios.create({
       baseURL: 'http://api.openweathermap.org',
       params: {
-        appid: '9170e0e85794088df319259526c55afd',
+        appid: import.meta.env.VITE_OPEN_WEATHER_API_KEY,
       },
     })
   }
